@@ -1,0 +1,16 @@
+@import '~bulma/sass/utilities/initial-variables';
+
+$navbar-item-active-color: $cyan;
+
+@import '~bulma/bulma';
+@import '~bulma-tooltip/dist/css/bulma-tooltip';
+
+#root,
+#root > div {
+	height: 100%;
+}
+
+.cell-fit-content {
+	width: 1%;
+	white-space: nowrap;
+}
