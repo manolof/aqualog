@@ -203,7 +203,7 @@ const updateMeasurementLimitsAction = (payload, uid) => {
 
 const toggleModalAction = (payload) => ({
 	type: MeasurementsActions.TOGGLE_MODAL,
-	payload
+	payload,
 });
 
 export {

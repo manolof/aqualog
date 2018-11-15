@@ -63,40 +63,36 @@ const measurementsReducer = (state = initialState, action) => {
 			};
 
 		case MeasurementsActions.UPDATE_MEASUREMENT_SUCCESS:
-			const updatedMeasurements = state.items
-				.map((measurement) => {
-					if (measurement.id !== payload.id) {
-						return measurement;
-					}
-
-					return {
-						...measurement,
-						date: payload.date,
-						values: payload.values,
-					};
-				});
-
 			return {
 				...state,
-				items: updatedMeasurements,
+				items: state.items
+					.map((measurement) => {
+						if (measurement.id !== payload.id) {
+							return measurement;
+						}
+
+						return {
+							...measurement,
+							date: payload.date,
+							values: payload.values,
+						};
+					}),
 			};
 
 		case MeasurementsActions.UPDATE_MEASUREMENT_LIMITS_SUCCESS:
-			const updatedMeasurementLimits = state.limits
-				.map((measurementLimit) => {
-					if (measurementLimit.id !== payload.id) {
-						return measurementLimit;
-					}
-
-					return {
-						...measurementLimit,
-						values: payload.values,
-					};
-				});
-
 			return {
 				...state,
-				limits: updatedMeasurementLimits,
+				limits: state.limits
+					.map((measurementLimit) => {
+						if (measurementLimit.id !== payload.id) {
+							return measurementLimit;
+						}
+
+						return {
+							...measurementLimit,
+							values: payload.values,
+						};
+					}),
 			};
 
 		case MeasurementsActions.DELETE_MEASUREMENT_SUCCESS:

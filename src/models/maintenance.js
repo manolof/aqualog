@@ -6,6 +6,7 @@ export const MaintenanceLogRecordModel = PropTypes.shape({
 	date: PropTypes.instanceOf(Date),
 	values: PropTypes.shape({
 		description: PropTypes.string,
+
 		// TODO maybe different structure
 	}),
 });

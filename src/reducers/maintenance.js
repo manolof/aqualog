@@ -43,22 +43,20 @@ const maintenanceLogRecordsReducer = (state = initialState, action) => {
 			};
 
 		case MaintenanceLogRecordsActions.UPDATE_MAINTENANCE_LOG_RECORD_SUCCESS:
-			const updatedMaintenanceLogRecords = state.items
-				.map((maintenanceLogRecord) => {
-					if (maintenanceLogRecord.id !== payload.id) {
-						return maintenanceLogRecord;
-					}
-
-					return {
-						...maintenanceLogRecord,
-						date: payload.date,
-						values: payload.values,
-					};
-				});
-
 			return {
 				...state,
-				items: updatedMaintenanceLogRecords,
+				items: state.items
+					.map((maintenanceLogRecord) => {
+						if (maintenanceLogRecord.id !== payload.id) {
+							return maintenanceLogRecord;
+						}
+
+						return {
+							...maintenanceLogRecord,
+							date: payload.date,
+							values: payload.values,
+						};
+					}),
 			};
 
 		case MaintenanceLogRecordsActions.DELETE_MAINTENANCE_LOG_RECORD_SUCCESS:

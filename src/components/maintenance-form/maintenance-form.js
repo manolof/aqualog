@@ -49,7 +49,7 @@ class MaintenanceLogRecordFormComponent extends Component {
 		};
 
 		this.props.onFormSubmit(values);
-	};
+	}
 
 	render() {
 		return (

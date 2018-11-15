@@ -139,7 +139,7 @@ const deleteMaintenanceLogRecordAction = (id) => {
 
 const toggleModalAction = (payload) => ({
 	type: MaintenanceLogRecordsActions.TOGGLE_MODAL,
-	payload
+	payload,
 });
 
 export {

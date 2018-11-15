@@ -39,6 +39,7 @@ class MeasurementChartsComponent extends Component {
 						lineTension: 0,
 					},
 					{
+
 						// TODO WIP
 						label: 'Min',
 						data: limits && validMeasurementItems(key)
@@ -48,9 +49,10 @@ class MeasurementChartsComponent extends Component {
 						radius: 0,
 						borderColor: '#ff3860',
 						borderWidth: 1,
-						backgroundColor: 'rgba(0,0,0,0.1)'
+						backgroundColor: 'rgba(0,0,0,0.1)',
 					},
 					{
+
 						// TODO WIP
 						label: 'Max',
 						data: limits && validMeasurementItems(key)
@@ -59,7 +61,7 @@ class MeasurementChartsComponent extends Component {
 						radius: 0,
 						borderColor: '#ff3860',
 						borderWidth: 1,
-						backgroundColor: 'rgba(0,0,0,0.1)'
+						backgroundColor: 'rgba(0,0,0,0.1)',
 					},
 				],
 			};
@@ -78,16 +80,15 @@ class MeasurementChartsComponent extends Component {
 						measurementChartData
 							.slice(0, 3)
 							.map((data, i) => (
-									<div key={i} className='column is-4'>
-										<h5 className='has-text-centered is-size-7'>{data.datasets[0].label}</h5>
-										<Line
-											data={data}
-											height={150}
-											options={options}
-										/>
-									</div>
-								)
-							)
+								<div key={i} className='column is-4'>
+									<h5 className='has-text-centered is-size-7'>{data.datasets[0].label}</h5>
+									<Line
+										data={data}
+										height={150}
+										options={options}
+									/>
+								</div>
+							))
 					}
 				</div>
 				<div className='columns'>
@@ -95,16 +96,15 @@ class MeasurementChartsComponent extends Component {
 						measurementChartData
 							.slice(3)
 							.map((data, i) => (
-									<div key={i} className='column is-3'>
-										<h5 className='has-text-centered is-size-7'>{data.datasets[0].label}</h5>
-										<Line
-											data={data}
-											height={150}
-											options={options}
-										/>
-									</div>
-								)
-							)
+								<div key={i} className='column is-3'>
+									<h5 className='has-text-centered is-size-7'>{data.datasets[0].label}</h5>
+									<Line
+										data={data}
+										height={150}
+										options={options}
+									/>
+								</div>
+							))
 					}
 				</div>
 			</Fragment>
