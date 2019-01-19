@@ -4,6 +4,17 @@ import { Line } from 'react-chartjs-2';
 import { MeasurementsModel } from '../../models/measurements';
 import { formatDate } from '../../shared/helpers';
 
+function factorData(data) {
+	return data.map((e, i, a) => {
+		const prev = a[i - 1];
+		const next = a[i + 1];
+		if (e === prev && e === next) {
+			return '' + e;
+		}
+		return e;
+	}).map(e => typeof e === 'string' ? null : e);
+}
+
 class MeasurementChartsComponent extends Component {
 	render() {
 		const { state } = this.props;
@@ -32,11 +43,14 @@ class MeasurementChartsComponent extends Component {
 				datasets: [
 					{
 						label: key,
-						data: validMeasurementItems(key)
-							.map((item) => item.values[key.toLowerCase()]),
+						data: factorData(
+							validMeasurementItems(key)
+								.map((item) => item.values[key.toLowerCase()]),
+						),
 						fill: false,
 						borderColor: colors[i],
 						lineTension: 0,
+						spanGaps: true,
 					},
 					{
 
@@ -68,20 +82,25 @@ class MeasurementChartsComponent extends Component {
 		});
 
 		const options = {
+			responsive: true,
 			legend: {
 				display: false,
+			},
+			hover: {
+				mode: 'nearest',
+				intersect: true,
 			},
 		};
 
 		return (
 			<Fragment>
-				<div className='columns'>
+				<div className="columns">
 					{
 						measurementChartData
 							.slice(0, 3)
 							.map((data, i) => (
-								<div key={i} className='column is-4'>
-									<h5 className='has-text-centered is-size-7'>{data.datasets[0].label}</h5>
+								<div key={i} className="column is-4">
+									<h5 className="has-text-centered is-size-7">{data.datasets[0].label}</h5>
 									<Line
 										data={data}
 										height={150}
@@ -91,13 +110,13 @@ class MeasurementChartsComponent extends Component {
 							))
 					}
 				</div>
-				<div className='columns'>
+				<div className="columns">
 					{
 						measurementChartData
 							.slice(3)
 							.map((data, i) => (
-								<div key={i} className='column is-3'>
-									<h5 className='has-text-centered is-size-7'>{data.datasets[0].label}</h5>
+								<div key={i} className="column is-3">
+									<h5 className="has-text-centered is-size-7">{data.datasets[0].label}</h5>
 									<Line
 										data={data}
 										height={150}
